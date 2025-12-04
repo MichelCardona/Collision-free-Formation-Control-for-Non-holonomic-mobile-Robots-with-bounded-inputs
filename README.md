@@ -23,3 +23,6 @@ Overall, this weighted-graph-based formation control approach, combined with lin
 
 
 <img width="437" height="291" alt="image" src="https://github.com/user-attachments/assets/6dd89a52-f9e8-4899-bfd9-72f30c56cae7" />
+
+
+w_ij (x)=-1/f(k_X )   csch^2⁡〖((f(x_i-x_j )-f(δ))/k_X )+1〗
