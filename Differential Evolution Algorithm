@@ -1,0 +1,133 @@
+This is a matlab code.
+
+x1d = [-2 2]'*0.6;
+x2d = [-1 1]'*0.6;
+x4d = [0 0]';
+x3d = [1 -1]'*0.6;
+delta = 0.15;
+bias = [x1d x2d x3d x4d];  
+
+[K2,~] = DE(bias, delta, 24);
+
+function [K, fx_plot] = DE(bias, delta, C)
+    % Obtener las distancias deseadas (diferencias en X e Y)
+    [df_x, df_y] = Get_Desired_Distances(bias);
+    
+    % Parámetros del algoritmo DE
+    G = 2000;   % Número de generaciones
+    N = 50;    % Tamaño de la población
+    D = C;     % Dimensión 
+    
+    F = 0.6;   % Factor de mutación
+    CR = 0.9;  % Tasa de recombinación
+
+    % Límites de los valores de K
+    xl = (1e-4) * ones(D, 1);  % Límite inferior
+    xu = 100 * ones(D, 1);  % Límite superior
+
+    % Inicializar población y fitness
+    x = zeros(D, N);
+    fitness = zeros(1, N);
+
+    % Inicialización aleatoria de la población
+    for i = 1:N
+        x(:, i) = xl + (xu - xl) .* rand(D, 1);
+        fitness(i) = Fitness_Function(x(:, i), df_x, df_y, delta);
+    end
+
+    % Almacenar el mejor fitness por generación
+    fx_plot = zeros(1, G);
+
+    % Algoritmo principal de evolución diferencial
+    for g = 1:G
+        for i = 1:N
+            % Mutación
+            I = randperm(N);
+            I(I == i) = [];
+            r = I(1:3);
+            v = x(:, r(1)) + F * (x(:, r(2)) - x(:, r(3)));
+
+            % Recombinación
+            u = zeros(D, 1);
+            k = randi([1 D]);
+
+            for j = 1:D
+                R = rand;
+                if R <= CR || j == k
+                    u(j) = v(j);
+                else
+                    u(j) = x(j, i);
+                end
+            end
+
+            % Limitar los valores de u a los límites inferiores y superiores
+            u = min(u, xu);
+            u = max(u, xl);
+
+            % Calcular fitness de la nueva solución
+            fitness_u = Fitness_Function(u, df_x, df_y, delta);
+
+            % Selección
+            if fitness_u < fitness(i)
+                x(:, i) = u;
+                fitness(i) = fitness_u;
+            end
+        end
+
+        % Almacenar el mejor valor de fitness en cada generación
+        fx_plot(g) = min(fitness);
+    end
+
+    % Devolver la mejor solución final (el mejor K encontrado)
+    [~, igb] = min(fitness);
+    K = x(:, igb)';
+end
+
+% Función de Fitness
+function z = Fitness_Function(K, df_x, df_y, delta)
+    D = numel(K);
+    w = zeros(D, 1);
+
+    for i = 1:D
+        % Para la primera mitad (12 K): diferencias en X
+        if i <= 12
+            f_delta = log(cosh(delta));
+            f_k = log(cosh(K(i)));
+            w(i) = abs(f_delta + K(i) * acsch(sqrt(f_k)) - log(cosh(df_x(i))));
+        else
+            % Para la segunda mitad (12 K): diferencias en Y
+            f_delta = log(cosh(delta));
+            f_k = log(cosh(K(i)));
+            w(i) = abs(f_delta + K(i) * acsch(sqrt(f_k)) - log(cosh(df_y(i-12))));
+        end
+    end
+
+    % Fitness es el promedio de los errores cuadráticos
+    z = sum(w.^2) / D;
+end
+
+% Obtener distancias deseadas (diferencias en X e Y)
+function [df_x, df_y] = Get_Desired_Distances(bias)
+    df_x = [abs(bias(1,1)-bias(1,2)) abs(bias(1,1)-bias(1,3)) abs(bias(1,1)-bias(1,4))...
+               abs(bias(1,2)-bias(1,1)) abs(bias(1,2)-bias(1,3)) abs(bias(1,2)-bias(1,4))...
+               abs(bias(1,3)-bias(1,1)) abs(bias(1,3)-bias(1,2)) abs(bias(1,3)-bias(1,4))...
+               abs(bias(1,4)-bias(1,1)) abs(bias(1,4)-bias(1,2)) abs(bias(1,4)-bias(1,3))];
+
+    df_y = [abs(bias(2,1)-bias(2,2)) abs(bias(2,1)-bias(2,3)) abs(bias(2,1)-bias(2,4))...
+               abs(bias(2,2)-bias(2,1)) abs(bias(2,2)-bias(2,3)) abs(bias(2,2)-bias(2,4))...
+               abs(bias(2,3)-bias(2,1)) abs(bias(2,3)-bias(2,2)) abs(bias(2,3)-bias(2,4))...
+               abs(bias(2,4)-bias(2,1)) abs(bias(2,4)-bias(2,2)) abs(bias(2,4)-bias(2,3))];
+
+    %  df_x = [bias(1,1)-bias(1,2) bias(1,1)-bias(1,3) bias(1,1)-bias(1,4)...
+    %            bias(1,2)-bias(1,1) bias(1,2)-bias(1,3) bias(1,2)-bias(1,4)...
+    %            bias(1,3)-bias(1,1) bias(1,3)-bias(1,2) bias(1,3)-bias(1,4)...
+    %            bias(1,4)-bias(1,1) bias(1,4)-bias(1,2) bias(1,4)-bias(1,3)];
+    % 
+    % df_y = [bias(2,1)-bias(2,2) bias(2,1)-bias(2,3) bias(2,1)-bias(2,4)...
+    %            bias(2,2)-bias(2,1) bias(2,2)-bias(2,3) bias(2,2)-bias(2,4)...
+    %            bias(2,3)-bias(2,1) bias(2,3)-bias(2,2) bias(2,3)-bias(2,4)...
+    %            bias(2,4)-bias(2,1) bias(2,4)-bias(2,2) bias(2,4)-bias(2,3)];
+
+    df_x = df_x';
+    df_y = df_y';
+end
