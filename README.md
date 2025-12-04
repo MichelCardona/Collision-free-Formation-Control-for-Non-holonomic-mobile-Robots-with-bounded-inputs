@@ -29,8 +29,8 @@ $$ w_ij (x)=-1/f(k_X )   csch^2⁡〖((f(x_i-x_j )-f(δ))/k_X )+1〗$$
 
 $$
 \begin{bmatrix}
-cos\theta & -bsin\theta\\
-sin\theta & bcos\theta
+\cos \theta & -b\sin \theta\\
+\sin \theta & b\cos \theta
 \end{bmatrix}^{-1}
 
 \begin{bmatrix}
