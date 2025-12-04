@@ -21,7 +21,7 @@ Since the robots’ positions are critical for the controller, a motion-tracking
 
 Overall, this weighted-graph-based formation control approach, combined with linearized models and advanced tracking systems, enables effective coordination of mobile robots with holonomic constraints, such as the Turtlebot3 Waffle Pi.
 
-The next mathematical model used for the differential robots:
+The next mathematical model used for the differential robots: <br>
 <img width="345" height="66" alt="image" src="https://github.com/user-attachments/assets/09cf36ac-a3d8-47ed-a37b-b6dccc08e60c" />  <br>
 
 The next control law was used:
