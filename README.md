@@ -29,17 +29,13 @@ $$ w_ij (x)=-1/f(k_X )   csch^2⁡〖((f(x_i-x_j )-f(δ))/k_X )+1〗$$
 
 $$
 \begin{bmatrix}
-v \\
-w
-\end{bmatrix}=
-\begin{bmatrix}
 cos(/theta) & -bsin(/theta)\\
 sin(/theta) & bcos(/theta)
 \end{bmatrix}^{-1}
 
 \begin{bmatrix}
 \dot{x} \\
-\dot{x}
+\dot{y}
 \end{bmatrix}
 $$
 
