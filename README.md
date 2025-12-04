@@ -34,4 +34,4 @@ The next control law was used:
 
 <img width="414" height="59" alt="image" src="https://github.com/user-attachments/assets/c06ce9c4-0008-4b5f-8a82-ad6c6d977ec8" />  <br>
 
-Such control law was designed by our project's adviser, it needs the graph's weights 'w_ij' the equation depends on the parameter 'K_x'. The aforementioned parameter is very hard to compute, a differential Evolution Algorithm was used to estimate it.
+Such control law was designed by our project's adviser, it needs the graph's weights 'w_ij' the equation depends on the parameter 'K_x'. The aforementioned parameter is very hard to compute, a differential Evolution Algorithm was used to estimate it. the other parameters present in the equations are positive constants.
