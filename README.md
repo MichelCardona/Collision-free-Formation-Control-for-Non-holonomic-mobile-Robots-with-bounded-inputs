@@ -20,3 +20,6 @@ The designed controller takes these weights and decomposes them into their X and
 Since the robots’ positions are critical for the controller, a motion-tracking camera system is used to obtain real-time positional data. This system provides accurate and reliable information regarding each robot’s location, allowing the controller to make efficient adjustments synchronized across all agents.
 
 Overall, this weighted-graph-based formation control approach, combined with linearized models and advanced tracking systems, enables effective coordination of mobile robots with holonomic constraints, such as the Turtlebot3 Waffle Pi.
+
+
+<img width="437" height="291" alt="image" src="https://github.com/user-attachments/assets/6dd89a52-f9e8-4899-bfd9-72f30c56cae7" />
