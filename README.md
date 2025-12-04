@@ -34,10 +34,4 @@ The next control law was used:
 
 <img width="414" height="59" alt="image" src="https://github.com/user-attachments/assets/c06ce9c4-0008-4b5f-8a82-ad6c6d977ec8" />  <br>
 
-<img width="414" height="59" alt="image" src="https://github.com/user-attachments/assets/6c65f734-4359-49d2-9792-5568dbfc0a20" />  <br>
-
-needs the graph's weights:
-
-Differential Evolution Algorithm was also used in order to compute the graph's weights
-
-<img width="437" height="291" alt="image" src="https://github.com/user-attachments/assets/6dd89a52-f9e8-4899-bfd9-72f30c56cae7" />  <br>
+Such control law was designed by our project's adviser, it needs the graph's weights 'w_ij' the equation depends on the parameter 'K_x'. The aforementioned parameter is very hard to compute, a differential Evolution Algorithm was used to estimate it.
