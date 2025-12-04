@@ -27,4 +27,15 @@ Overall, this weighted-graph-based formation control approach, combined with lin
 
 $$ w_ij (x)=-1/f(k_X )   csch^2⁡〖((f(x_i-x_j )-f(δ))/k_X )+1〗$$
 
-$$ [█(v@ω)]=[■(cos⁡(θ)&-bsin(θ)@sin⁡(θ)&bcos(θ) )]^(-1) [█(x ̇@y ̇ )] $$
+$$
+
+\begin{bmatrix}
+1  \\
+0
+\end{bmatrix} = 
+
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+$$
