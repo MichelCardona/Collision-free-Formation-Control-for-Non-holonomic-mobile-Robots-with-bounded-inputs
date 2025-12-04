@@ -31,12 +31,12 @@ $$
 \begin{bmatrix}
 v \\
 w
-\end{bmatrix}
-=
+\end{bmatrix}=
 \begin{bmatrix}
 cos(/theta) & -bsin(/theta)\\
 sin(/theta) & bcos(/theta)
 \end{bmatrix}^{-1}
+
 \begin{bmatrix}
 \dot{x} \\
 \dot{x}
