@@ -38,7 +38,7 @@ X
 \begin{bmatrix}
 0 \\
 I
-\end{bmatrix}^(-1)
+\end{bmatrix}^{-1}
 u
 $$
 
