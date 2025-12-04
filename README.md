@@ -29,16 +29,16 @@ $$ w_ij (x)=-1/f(k_X )   csch^2⁡〖((f(x_i-x_j )-f(δ))/k_X )+1〗$$
 
 $$
 \dot{X} =
-\begin{pmatrix}
+\begin{bmatrix}
 0 & I \\
 -K_x & -K_v
-\end{pmatrix}
+\end{bmatrix}
 X
 +
-\begin{pmatrix}
+\begin{bmatrix}
 0 \\
 I
-\end{pmatrix}
+\end{bmatrix}
 u
 $$
 
