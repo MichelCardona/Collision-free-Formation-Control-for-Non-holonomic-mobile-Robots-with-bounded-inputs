@@ -21,24 +21,23 @@ Since the robots’ positions are critical for the controller, a motion-tracking
 
 Overall, this weighted-graph-based formation control approach, combined with linearized models and advanced tracking systems, enables effective coordination of mobile robots with holonomic constraints, such as the Turtlebot3 Waffle Pi.
 
+The next mathematical model used for the differential robots:
+<img width="345" height="66" alt="image" src="https://github.com/user-attachments/assets/09cf36ac-a3d8-47ed-a37b-b6dccc08e60c" />
+
+The next control law was used:
+
+<img width="484" height="89" alt="image" src="https://github.com/user-attachments/assets/5ebd5a66-69c4-4300-b641-95ec2a5d2946" />
+
+<img width="476" height="90" alt="image" src="https://github.com/user-attachments/assets/98140955-6678-4e0b-b3ab-9c53ece86bad" />
+
+<img width="205" height="34" alt="image" src="https://github.com/user-attachments/assets/7a88dfdb-04cc-4aeb-af91-cb4f40cb820b" />
+
+<img width="414" height="59" alt="image" src="https://github.com/user-attachments/assets/c06ce9c4-0008-4b5f-8a82-ad6c6d977ec8" />
+
+<img width="414" height="59" alt="image" src="https://github.com/user-attachments/assets/6c65f734-4359-49d2-9792-5568dbfc0a20" />
+
+needs the graph's weights:
+
+Differential Evolution Algorithm was also used in order to compute the graph's weights
 
 <img width="437" height="291" alt="image" src="https://github.com/user-attachments/assets/6dd89a52-f9e8-4899-bfd9-72f30c56cae7" />
-
-
-$$ w_ij (x)=-1/f(k_X )   csch^2⁡〖((f(x_i-x_j )-f(δ))/k_X )+1〗$$
-
-$$
-$$
-\begin{pmatrix}
-\cos\theta & -\sin\theta \\
-\sin\theta & \cos\theta
-\end{pmatrix}
-$$
-
-
-\begin{bmatrix}
-\dot{x} \\
-\dot{y}
-\end{bmatrix}
-$$
-
